@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8" />
+        <meta name ="viewport" content="width=device-width, initial-scale=1.0 "/>
+        <title>Cyber Attack Defender</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+        <style>
+            * {
+                margin : 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+        body
+        {
+            font-family: "poppins", sans-serif;
+            background-color: black;
+            color: white;
+         }
+         nav
+         {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            z-index: 3;
+            position: relative;
+            animation: SlideDown 1s ease forwards;
+        }
+        @keyframes SlideDown
+        {
+            from {opacity:0; transform:translateY(-50px);}
+            to {opacity:1; transform:translateY(0);}
+
+        }
+        nav .logo
+        {
+            font-size: 22px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        nav .logo span{
+            color: #00bfff;
+            margin-right: 5px;
+            font-size: 28px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        nav ul li 
+        {
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 400;
+            transition: 0.3s;
+        }
+        nav ul li:hover
+        {
+            color: #ffd24d;
+        }
+        .nav-btns 
+        {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .nav-btns a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .login
+        {
+            background: transparent;
+        }
+        .get-started
+        {
+            background: #ff3b3b;
+            transition: 0.3s;
+        }
+        .get-started:hover{
+            background: #ff2020;
+        }
+        .hero-container
+        {
+            position: relative;
+            background-color: #0e0f18;
+            clip-path: polygon(0 0, 100%% 0,100%% 90%%, 0 98%%);
+            height: 700px;
+            
+        }
+        .hero
+        {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 8%;
+            flex-wrap: wrap;
+            height: 100%;
+        }
+        .hero-text
+        {
+            max-width: 550px;
+        }
+        .hero-text h1
+        {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            color: #fff;
+            animation: fadeUp 1s ease forwards;
+        }
+        .hero-text h1 span
+        {
+            color: #facc15;
+            font-weight: 700;
+            position: relative;
+            padding-left: 70px;
+        }
+        .hero-text span::before
+        {
+            content: "";
+            position: absolute;
+            left: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 5px;
+            background-color: #facc15;
+            border-radius: 2px;
+        } 
+        .hero-text p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #9aa4b2;
+            margin: 25px 0;
+            opacity:0;
+            transform:translateY(40px);
+            animation: fadeUp 1s ease forwards 0.5s;
+        }
+        .btn-red{
+            background: #ff3b3b;
+            padding: 14px 28px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            display: inline-block;
+            margin-top: 25px;
+            transition: 0.3s;
+            opacity:0;
+            transform:translateY(40px);
+            animation: fadeUp 1s ease forwards 1s;
+        }
+        .btn-red:hover
+        {
+            background: #ff2020;
+        }
+        @keyframes fadeUp
+        {
+            to {
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+       .hero-img img
+        {
+            width : auto;
+            height: auto;
+            opacity:0;
+            transform:scale(0.9);
+            animation: ZoomIn 1s ease forwards 1.2s;
+        }
+        @keyframes ZoomIn
+        {
+            to
+            {
+                opacity:1;
+                transform:scale(1);
+            }
+        }
+         .compatible{
+            margin-top: 15px;
+            font-size: 1px;
+            color: #9aa4b2;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards 1.4s;
+        }
+        .compatible img
+        {
+            width: 18px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        .companies 
+        {
+            background-color: #fff;
+            color: #000;
+            text-align: center;
+            padding: 60px 8%;
+            margin-top: -80px;
+            
+        }
+        .companies p
+        {
+            font-size: 16px;
+            color: black;
+            font-weight: 900;
+            margin-bottom: 40px;
+            animation: fadeUp 1s ease forwards;
+        }
+        .company-logos
+        {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 40px;
+            align-items: center;
+            justify-items: center;
+        }
+        .company-logos img
+        {
+            max-width: 120px;
+            max-height: 50px;
+            object-fit: contain;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideIn 0.8s ease forwards;
+        }
+        .company-logos img:nth-child(1) { animation-delay: 0.1s; }
+        .company-logos img:nth-child(2) { animation-delay: 0.2s; }
+        .company-logos img:nth-child(3) { animation-delay: 0.3s; }
+        .company-logos img:nth-child(4) { animation-delay: 0.4s; }
+        .company-logos img:nth-child(5) { animation-delay: 0.5s; }
+        .company-logos img:nth-child(6) { animation-delay: 0.6s; }
+        .company-logos img:nth-child(7) { animation-delay: 0.7s; }
+        .company-logos img:nth-child(8) { animation-delay: 0.8s; }
+
+        @keyframes slideIn
+        {
+            to
+            {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .logo-slider
+        {
+            overflow: hidden;
+            position: relative;
+            background: #fff;
+            padding: 20px 0;
+        }
+        .slide-track
+        {
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
+        .slide-track img
+        {
+            max-width: 120px;
+            max-height: 50px;
+            object-fit: contain;
+            margin: 0 40px;
+         }
+         @keyframes scroll{
+            0%
+                {
+                    transform: translateX(-100%);
+                }
+            100%
+                {
+                    transform: translateX(0);
+                }
+         }
+         .cybersecurity-section{
+            padding: 60px 0;
+            background: #fff;
+            
+         }
+         .cybersecurity-container
+         {
+            display:flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            gap: 50px;
+            opacity:0;
+            transform:translateY(50px);
+            animation: fadeUp 1s ease forwards;
+         }
+         .cybersecurity-image img
+         {
+            width: 100%;
+            max-width: 500px;
+         }
+         .cybersecurity-content h2
+         {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: black;
+         }
+         .cybersecurity-content p
+         {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            text-align: justify;
+         }
+         .cybersecurity-stats
+         {
+            display: flex;
+            gap: 50px;
+         }
+        .stat-number
+        {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e53935;
+        }
+        .stat-label
+        {
+            display: block;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        .services-section
+        {
+            padding: 80px 8%;
+            background: #fff;
+            color: #111;
+            text-align:center;
+        }
+        .services-header h2
+        {
+            font-size:2.2rem;
+            font-weight:700;
+            margin-bottom:15px;
+            animation: fadeUp 1s ease forwards;
+            color: #111;
+        }
+        .services header p
+        {
+            color: #6b7280;
+            margin-bottom: 50px;
+            line-height: 1.6;
+            animation: fadeUp 1s ease forwards 0.3s;
+        }
+        .services-grid
+        {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            align-items: stretch;
+        }
+        .service-card
+        {
+            background: #ffff;
+            padding: 30px 25px;
+            border-radius: 12px;
+            text-align:left;
+            position:relative;
+            opacity:0;
+            transform:translateY(40px);
+            animation: fadeUp 0.8s ease forwards;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid #f3f4f6;
+            transition: all 0.3s ease;
+
+        }
+        .service-card:nth-child(1){animation-delay:0.2s;}
+        .service-card:nth-child(2){animation-delay:0.4s;}
+        .service-card:nth-child(3){animation-delay:0.6s;}
+        .service-card:nth-child(4){animation-delay:0.8s;}
+        .service-card:nth-child(5){animation-delay:1s;}
+        .service-card:nth-child(6){animation-delay:1.2s;}
+        
+        .service-card:hover
+        {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .service-card .icon
+        {
+            font-size:2.2rem;
+            color:var(--clr);
+            margin-bottom:15px;
+        }
+        .service-card h3
+        {
+            font-size:1.2rem;
+            margin-bottom:10px;
+            font-weight:600;
+            color: #111;
+            text-transform: capitalize;
+        }
+        .service-card p
+        {
+            font-size:0.95rem;
+            color: #4b5563;
+            line-height:1.5;
+        }
+        .service-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo"><span>▰</span> Sark</div>
+        <ul>
+            <li>Demos</li>
+            <li>About</li>
+            <li>Blog</li>
+            <li>Pages</li>
+            <li>Contact</li>
+        </ul>
+        <div class="nav-btns">
+            <a href="#" class="login">Login</a>
+             <a href="#" class="get-started">Get Started</a>
+        </div>
+    </nav>
+    <div class="hero-container">
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Cyber Attack <br /><span>Defender</span></h1>
+                <p>
+                    cybersecurity is the practice of protecting systems and programs
+                    from digital attacks.  These Cyberattacks destroy senstive
+                    information or interrupt normal business processes.
+                </p>
+                <a href ="#" class="btn-red">Start Free Scan</a>
+                <div class ="compatible">
+                    compatible with
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+                    />
+                    <img src="windows.svg"/>
+                </div>
+            </div>
+            <div class="hero-img">
+                <img src ="image2.png"/>
+            </div>
+        </section>
+        <section class="companies">
+            <p> Trusted by more than 1200+ companies worldWide</p>
+            <div class="logo-slider">
+                <div class="slide-track">
+                <img src ="airbnb.png"/>
+                <img src ="amazon.png"/>
+                <img src ="fedex.png"/>
+                <img src ="google.png"/>
+                <img src ="microsoft.png"/>
+                <img src ="ola.png"/>
+                <img src ="walmart.jpg"/>
+                <img src ="oyo.png"/>
+                <img src ="airbnb.png"/>
+                <img src ="amazon.png"/>
+                <img src ="fedex.png"/>
+                <img src ="google.png"/>
+                <img src ="microsoft.png"/>
+                <img src ="ola.png"/>
+                <img src ="walmart.jpg"/>
+                <img src ="oyo.png"/>
+                <img src ="airbnb.png"/>
+                <img src ="amazon.png"/>
+                <img src ="fedex.png"/>
+                <img src ="google.png"/>
+                <img src ="microsoft.png"/>
+                <img src ="ola.png"/>
+                <img src ="walmart.jpg"/>
+                <img src ="oyo.png"/>
+                <img src ="airbnb.png"/>
+                <img src ="amazon.png"/>
+                <img src ="fedex.png"/>
+                <img src ="google.png"/>
+                <img src ="microsoft.png"/>
+                <img src ="ola.png"/>
+                <img src ="walmart.jpg"/>
+                <img src ="oyo.png"/>
+            </div>
+        </div>
+        </section>
+        <section class ="cybersecurity-section">
+            <div class= "cybersecurity-container">
+                <div class="cybersecurity-image">
+                    <img src="image3.png">
+                </div>
+                <div class="cybersecurity-content">
+                    <h2>Cyber Security Solutions <br> built on customer Trust</h2>
+                    <p>
+                        cybersecurity is very importantbecause of some security threats<br>
+                        and cyber-attacks.This software protects the data. Cybersecurity is<br> 
+                        important because not only it helps to secure information but also <br>
+                        our system from virus attacks.
+                    </p>
+                    <div class="cybersecurity-stats">
+                        <div>
+                            <span class="stat-number">4.9/5</span>
+                            <span class="stat-label">Customer Rating</span>
+                        </div>
+                        <div>
+                            <span class="stat-number">2563</span>
+                            <span class="stat-label">PC Scanned</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class = "services-section">
+            <div class="services-header">
+                <h2>We offer professional <br> cyber services</h2>
+                <p>We Reduce risk through consulting & security product expertise. <br>
+                   We are a trusted advisor for all cyber security.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                     <img src="network.jpg" alt="CISO Service" class="service-icon" />
+                    <h3>Network Monitoring</h3>
+                    <p>Our 24/7 Cyber Security Operations center puts state-of-the art threat detection.</p>
+                </div>
+
+            <div class="service-card">
+                <img src="security.jpg" alt="CISO Service" class="service-icon" />
+                <h3>Security Consulting</h3>
+                <p>Our Cyber Security Consulting strengthens your Organization with expertise.</p>
+            </div>
+
+            <div class="service-card">
+                <img src="pen.png" alt="CISO Service" class="service-icon" />
+                <h3>penetration Testing</h3>
+                <p>our penetration testing team can identify cybersecurity vulnerabilities.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="icon">📅</div>
+                <h3>Weekly Report</h3>
+                <p>We deliver detailed weekly reports for better security insights.</p>
+            </div>
+
+             <div class="service-card">
+      <img src="ciso.avif" alt="CISO Service" class="service-icon" />
+      <h3>Virtual CISO</h3>
+      <p>Get expert CISO guidance to strengthen your cybersecurity strategy.</p>
+    </div>
+
+     <div class="service-card">
+      <img src="incident.png" alt="CISO Service" class="service-icon" />
+      <h3>Incident Responder</h3>
+      <p>With a lots of Unique blocks you can easily create a page without coding.</p>
+    </div>
+  </div>
+        </div>
+    </section>
+
+            
+    </body>
+</html>
+
+
+                
+
+
